@@ -8,6 +8,9 @@ Simulation::Simulation(Graph graph, vector<Agent> agents) : mGraph(graph), mAgen
 void Simulation::step()
 {
     // TODO: implement this method
+   // for (int i = 0; i < mGraph.getNumVertices(); i++) {
+     //   mGraph.getParty(i).step(*this);
+    //}
 }
 
 bool Simulation::shouldTerminate() const

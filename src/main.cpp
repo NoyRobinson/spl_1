@@ -13,6 +13,9 @@ int main(int argc, char **argv)
         return -1;
     }
 
+    //std::unique_ptr<int> p1 = std:: make_unique<int>(1);
+    //std::unique_ptr<int> p2 = std:: make_unique<int>(2);
+
     // read simulation from config file
     const string config_path = argv[1];
     Simulation simulation = Parser::readSimulation(argv[1]);
