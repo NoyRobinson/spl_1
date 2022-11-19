@@ -1,7 +1,17 @@
 #pragma once
 
-class SelectionPolicy { };
+class SelectionPolicy { 
+public:
+    virtual int select() const;
+};
 
-class MandatesSelectionPolicy: public SelectionPolicy{ };
+class MandatesSelectionPolicy: public SelectionPolicy{ 
+public:
+    int select() const;
+};
 
-class EdgeWeightSelectionPolicy: public SelectionPolicy{ };
+class EdgeWeightSelectionPolicy: public SelectionPolicy{ 
+public:
+    int select() const;
+};
+
