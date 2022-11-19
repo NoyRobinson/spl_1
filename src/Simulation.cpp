@@ -1,4 +1,5 @@
 #include "Simulation.h"
+using namespace std;
 
 Simulation::Simulation(Graph graph, vector<Agent> agents) : mGraph(graph), mAgents(agents) 
 {
@@ -8,15 +9,24 @@ Simulation::Simulation(Graph graph, vector<Agent> agents) : mGraph(graph), mAgen
 void Simulation::step()
 {
     // TODO: implement this method
-   // for (int i = 0; i < mGraph.getNumVertices(); i++) {
-     //   mGraph.getParty(i).step(*this);
-    //}
 }
 
 bool Simulation::shouldTerminate() const
 {
-    // TODO implement this method
-    return true;
+    vector<vector<int>> coalitionParties = getPartiesByCoalitions(); // checking for 61 coalition or more
+    for(vector<int> singleCoalition: coalitionParties){
+        int coalitionSum = 0;
+        for(int singleParty: singleCoalition){
+            coalitionSum = coalitionSum + mGraph.getMandates(singleParty);
+        }
+        if(coalitionSum >= 61){
+            return true;
+        }
+    }
+    if (mGraph.getNumVertices() == mAgents.size()){ // check if all parties are in coalition
+        return true;
+    }
+    return false;
 }
 
 const Graph &Simulation::getGraph() const
