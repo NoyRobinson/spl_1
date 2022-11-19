@@ -13,17 +13,17 @@ void Simulation::step()
 
 bool Simulation::shouldTerminate() const
 {
-    vector<vector<int>> coalitionParties = getPartiesByCoalitions(); // checking for 61 coalition or more
+    vector<vector<int>> coalitionParties = getPartiesByCoalitions(); //checks if there are 61 mandates or more
     for(vector<int> singleCoalition: coalitionParties){
-        int coalitionSum = 0;
+        int sumOfMandatesInCoalition = 0;
         for(int singleParty: singleCoalition){
-            coalitionSum = coalitionSum + mGraph.getMandates(singleParty);
+            coalitionsumOfMandatesInCoalitionSum = sumOfMandatesInCoalition + mGraph.getMandates(singleParty);
         }
-        if(coalitionSum >= 61){
+        if(sumOfMandatesInCoalition >= 61){
             return true;
         }
     }
-    if (mGraph.getNumVertices() == mAgents.size()){ // check if all parties are in coalition
+    if (mGraph.getNumVertices() == mAgents.size()){ //checks if all parties are part of a coalition
         return true;
     }
     return false;
